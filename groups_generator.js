@@ -71,6 +71,11 @@ function generate_groups(all_people)
 
    }
 
+   if (list_1.length == 1 && list_2.length == 1)
+   {
+
+    
+   }
    return groups
 }
 
