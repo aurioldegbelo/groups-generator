@@ -48,7 +48,7 @@ function generate_groups(all_people)
        let b = pick_random_person(list_2)
       if(is_a_possible_pair(a, b, ruled_out_pairs))
       {
-        console.log("New group created:", a, b)
+        console.log("New pair created:", a, b)
         list_1 = list_1.filter(item => item !== a && item !== b)
         list_2 = list_2.filter(item => item !== a && item !== b)
        // console.log(list_1)
@@ -58,7 +58,7 @@ function generate_groups(all_people)
 
    }
 
-   console.log("Groups so far...", groups)
+   console.log("Pairs so far...", groups)
 
    let trio_options = []
 
