@@ -59,13 +59,13 @@ function generate_groups(all_people)
       if(is_a_possible_pair(a, b, impossible_pairs))
       {
         console.log("New group created:", a, b)
-        list_1.pop(a)
-        list_1.pop(b)
-        list_2.pop(a)
-        list_2.pop(b)
+        list_1 = list_1.filter(item => item !== a && item !== b)
+        //list_1.filter(item => item !== b)
+        list_2.filter(item => item !== a)
+        list_2.filter(item => item !== b)
         console.log(list_1)
         console.log(list_2)
-        groups.push(new Pair(a, b, "hello"))
+        groups.push(new Pair(a, b))
       }
 
    }
