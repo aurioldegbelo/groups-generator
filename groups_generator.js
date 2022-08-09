@@ -14,7 +14,7 @@ var all_people = [
   "Serge",
   "Carole",
   "Richard",
-
+  "Sonia"
 ];
 
 
@@ -38,12 +38,11 @@ function generate_groups(all_people)
    let list_1 = [...all_people]
    let list_2 = [...all_people]
 
-   console.log(list_1)
-   console.log(list_2)
+  // console.log(list_1)
+  // console.log(list_2)
 
    while (groups.length < n_groups)
    {
-       console.log("Iteration: ", groups.length )
       // randomly pick people from the two lists
        let a = pick_random_person(list_1)
        let b = pick_random_person(list_2)
@@ -54,20 +53,21 @@ function generate_groups(all_people)
         console.log("New pair created:", a, b)
         list_1 = list_1.filter(item => item !== a && item !== b)
         list_2 = list_2.filter(item => item !== a && item !== b)
-        console.log(list_1)
-        console.log(list_2)
+       // console.log(list_1)
+       // console.log(list_2)
         groups.push(new Pair(a, b))
       }
     
-      // there is only one group left, but the pairs are only ruled out pairs
+      // there is only one group left, but the two possible elements of the pair form a ruled out pair
       if (groups.length == n_groups-1 && !is_a_possible_pair(a, b, ruled_out_pairs)) 
       {
         groups = [] // start again
+        list_1 = [...all_people]
+        list_2 = [...all_people]
       }
     
    }
 
-   console.log(groups.length)
    console.log("Pairs so far...", groups)
 
    // if there happens to be an odd number of people to put into groups, we need one trio
