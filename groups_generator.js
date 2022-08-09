@@ -86,9 +86,8 @@ function generate_groups(all_people)
       let selected_trio = trio_options[r]
       console.log("Selected trio: ", selected_trio)
 
-      let id = index_of_trio(selected_trio, groups)
-
-      groups.filter
+    //  let id = index_of_trio(selected_trio, groups)
+      //groups.filter
       groups.push(selected_trio)
 
    }
