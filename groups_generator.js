@@ -1,8 +1,8 @@
 "use strict";
 /*
-@description: Algorithm to generate Teams for the course Geosoft at the Institute for Geoinformatics, University of Muenster
+@description: script to generate pairs/trios that satisfy given constraints
 @author: Auriol Degbelo
-Last modified: May 2017
+Last modified: August 2022
 */
 
 var all_people = [
@@ -26,26 +26,28 @@ console.log("Pairs ruled out: ", ruled_out_pairs)
 console.log("Groups for this quarter: ", generate_groups(all_people))
 
 
-
 /** Definition of all functions starts here */
 
+// function to generate the groups
 function generate_groups(all_people)
 {
+   let groups = []
+   let n_groups = 4
 
+   // generate two lists out the group of all people
    let list_1 = [...all_people]
    let list_2 = [...all_people]
 
    //console.log(list_1)
    //console.log(list_2)
 
-
-   let groups = []
-   let n_groups = 4
-
    while (groups.length < n_groups)
    {
+      // randomly pick people from the two lists
        let a = pick_random_person(list_1)
        let b = pick_random_person(list_2)
+
+       // create a new pair if the given conditions are fulfilled
       if(is_a_possible_pair(a, b, ruled_out_pairs))
       {
         console.log("New pair created:", a, b)
@@ -60,6 +62,7 @@ function generate_groups(all_people)
 
    console.log("Pairs so far...", groups)
 
+   // if there happens to be uneven numbers
    let trio_options = []
 
    if (list_1.length == 1 && list_2.length == 1)
@@ -67,9 +70,11 @@ function generate_groups(all_people)
 
       let c = list_1[0]
       console.log(`${c} is still looking for a group...`)
-      // look for trinomes
+
+      // look for trio
       for (let i=0; i< groups.length; i++)
       {
+          // find out trio options where the partner is not a ruled out person (i.e. the constraints still hold)
           let a = groups[i].p1
           let b = groups[i].p2
           if((is_a_possible_pair(a, c, ruled_out_pairs)) && (is_a_possible_pair(b, c, ruled_out_pairs)))
@@ -78,14 +83,17 @@ function generate_groups(all_people)
           }
       }
 
-      let r = getRandomInt(0, trio_options.length)
-      console.log("Possible trios: ",trio_options)
+      console.log("Possible trios: ", trio_options)
 
+      // randomly select a trio out of all possible options
+      let r = getRandomInt(0, trio_options.length)
       let selected_trio = trio_options[r]
       console.log("Selected trio: ", selected_trio)
 
+      // delete the pair
       groups = groups.filter (item => !in_trio(item.p1, selected_trio) && !in_trio(item.p2, selected_trio))
  
+      // add the trio to the final list of groups
       groups.push(selected_trio)
 
    }
@@ -102,7 +110,7 @@ function Pair (p1, p2)
   this.p2 = p2.toString()
 }
 
-// a Trinome is a group with three individuals
+// a Trio is a group with three individuals
 function Trio(p1, p2, p3)
 {
   this.p1 = p1.toString()
