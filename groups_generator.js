@@ -19,15 +19,11 @@ var all_people = [
 
 
 
-let impossible_pairs = [ new Pair ("Serge", "Carole"), new Pair ("Sonia", "Richard"), new Pair ("Jean-Yves", "Esther"), new Pair ("Lionel", "Naemi")] 
+let ruled_out_pairs = [ new Pair ("Serge", "Carole"), new Pair ("Sonia", "Richard"), new Pair ("Jean-Yves", "Esther"), new Pair ("Lionel", "Naemi")] 
 
-console.log(all_people)
-console.log(impossible_pairs)
-console.log(generate_groups(all_people))
-
-//pick_random_person(all_people)
-
-//is_a_possible_pair(pick_random_person (all_people), pick_random_person (all_people), impossible_pairs)
+console.log("All people: ",all_people)
+console.log("Pairs ruled out: ", ruled_out_pairs)
+console.log("Groups for this quarter: ", generate_groups(all_people))
 
 
 
@@ -39,8 +35,8 @@ function generate_groups(all_people)
    let list_1 = [...all_people]
    let list_2 = [...all_people]
 
-   console.log(list_1)
-   console.log(list_2)
+   //console.log(list_1)
+   //console.log(list_2)
 
 
    let groups = []
@@ -50,17 +46,19 @@ function generate_groups(all_people)
    {
        let a = pick_random_person(list_1)
        let b = pick_random_person(list_2)
-      if(is_a_possible_pair(a, b, impossible_pairs))
+      if(is_a_possible_pair(a, b, ruled_out_pairs))
       {
         console.log("New group created:", a, b)
         list_1 = list_1.filter(item => item !== a && item !== b)
         list_2 = list_2.filter(item => item !== a && item !== b)
-        console.log(list_1)
-        console.log(list_2)
+       // console.log(list_1)
+       // console.log(list_2)
         groups.push(new Pair(a, b))
       }
 
    }
+
+   console.log("Groups so far...", groups)
 
    let trio_options = []
 
@@ -68,26 +66,26 @@ function generate_groups(all_people)
    {
 
       let c = list_1[0]
-      console.log(`${c} still looking for a group...`)
+      console.log(`${c} is still looking for a group...`)
       // look for trinomes
       for (let i=0; i< groups.length; i++)
       {
           let a = groups[i].p1
           let b = groups[i].p2
-          if((is_a_possible_pair(a, c, impossible_pairs)) && (is_a_possible_pair(b, c, impossible_pairs)))
+          if((is_a_possible_pair(a, c, ruled_out_pairs)) && (is_a_possible_pair(b, c, ruled_out_pairs)))
           {
             trio_options.push (new Trio(a, b, c))
           }
       }
 
       let r = getRandomInt(0, trio_options.length)
-      console.log(trio_options)
+      console.log("Possible trios: ",trio_options)
 
       let selected_trio = trio_options[r]
       console.log("Selected trio: ", selected_trio)
 
-    //  let id = index_of_trio(selected_trio, groups)
-      //groups.filter
+      groups = groups.filter (item => !in_trio(item.p1, selected_trio) && !in_trio(item.p2, selected_trio))
+ 
       groups.push(selected_trio)
 
    }
@@ -114,7 +112,17 @@ function Trio(p1, p2, p3)
 }
 
 
+// check if a name is in the trio
+function in_trio (name, trio)
+{
+    let in_trio = false
+    if (name == trio.p1 || name == trio.p2 || name == trio.p3)
+    {
+       in_trio = true
+    }
 
+    return in_trio
+}
 
 // pick a random person from the list
 function pick_random_person (people_list)
@@ -133,7 +141,7 @@ function getRandomInt(min, max) {
 }
 
 // check if the current pair is a possible pair
-function is_a_possible_pair(a, b, impossible_pairs)
+function is_a_possible_pair(a, b, ruled_out_pairs)
 {
   // console.log("Current pair examined: ", a, b)
    let is_possible_pair = true
@@ -147,10 +155,10 @@ function is_a_possible_pair(a, b, impossible_pairs)
    else
    {
     // check if the current pair is in the list of impossible pair
-    for (let u = 0; u < impossible_pairs.length; u++)
+    for (let u = 0; u < ruled_out_pairs.length; u++)
     {
-       //console.log(impossible_pairs[u])
-       if ((impossible_pairs[u].p1 == a & impossible_pairs[u].p2 == b) || (impossible_pairs[u].p2 == a & impossible_pairs[u].p1 == b))
+       //console.log(ruled_out_pairs[u])
+       if ((ruled_out_pairs[u].p1 == a & ruled_out_pairs[u].p2 == b) || (ruled_out_pairs[u].p2 == a & ruled_out_pairs[u].p1 == b))
        {
          is_possible_pair = false
          break
