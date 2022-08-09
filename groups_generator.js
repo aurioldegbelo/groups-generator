@@ -14,7 +14,7 @@ var all_people = [
   "Serge",
   "Carole",
   "Richard",
-  "Sonia",
+
 ];
 
 
@@ -62,7 +62,7 @@ function generate_groups(all_people)
 
    console.log("Pairs so far...", groups)
 
-   // if there happens to be uneven numbers
+   // if there happens to be an odd number of people to put into groups, we need one trio
    let trio_options = []
 
    if (list_1.length == 1 && list_2.length == 1)
