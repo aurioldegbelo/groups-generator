@@ -43,6 +43,7 @@ function generate_groups(all_people)
 
    while (groups.length < n_groups)
    {
+       console.length("Iteration: ", groups.length )
       // randomly pick people from the two lists
        let a = pick_random_person(list_1)
        let b = pick_random_person(list_2)
@@ -57,7 +58,9 @@ function generate_groups(all_people)
         console.log(list_2)
         groups.push(new Pair(a, b))
       }
-      else if (groups.length == n_groups-1) // there is only one group left, but the pairs are only ruled out pairs
+      
+      // there is only one group left, but the pairs are only ruled out pairs
+      if (groups.length == n_groups-2 && !is_a_possible_pair(a, b, ruled_out_pairs)) 
       {
         groups = [] // start again
       }
