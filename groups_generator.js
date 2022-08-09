@@ -57,6 +57,10 @@ function generate_groups(all_people)
         console.log(list_2)
         groups.push(new Pair(a, b))
       }
+      else if (groups.length == n_groups-1) // there is only one group left, but the pairs are only ruled out pairs
+      {
+        groups = [] // start again
+      }
 
    }
 
