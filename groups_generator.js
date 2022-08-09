@@ -38,8 +38,8 @@ function generate_groups(all_people)
    let list_1 = [...all_people]
    let list_2 = [...all_people]
 
-   //console.log(list_1)
-   //console.log(list_2)
+   console.log(list_1)
+   console.log(list_2)
 
    while (groups.length < n_groups)
    {
@@ -53,8 +53,8 @@ function generate_groups(all_people)
         console.log("New pair created:", a, b)
         list_1 = list_1.filter(item => item !== a && item !== b)
         list_2 = list_2.filter(item => item !== a && item !== b)
-       // console.log(list_1)
-       // console.log(list_2)
+        console.log(list_1)
+        console.log(list_2)
         groups.push(new Pair(a, b))
       }
 
