@@ -18,12 +18,6 @@ var all_people = [
 ];
 
 
-// a Pair is a group of two individuals
-function Pair (s1, s2)
-{
-  this.s1 = s1.toString()
-  this.s2 = s2.toString()
-}
 
 let impossible_pairs = [ new Pair ("Serge", "Carole"), new Pair ("Sonia", "Richard"), new Pair ("Jean-Yves", "Esther"), new Pair ("Lionel", "Naemi")] 
 
@@ -61,9 +55,6 @@ function generate_groups(all_people)
         console.log("New group created:", a, b)
         list_1 = list_1.filter(item => item !== a && item !== b)
         list_2 = list_2.filter(item => item !== a && item !== b)
-        //list_1.filter(item => item !== b)
-        //list_2.filter(item => item !== a)
-        //list_2.filter(item => item !== b)
         console.log(list_1)
         console.log(list_2)
         groups.push(new Pair(a, b))
@@ -71,13 +62,56 @@ function generate_groups(all_people)
 
    }
 
+   let trinome_options = []
+
    if (list_1.length == 1 && list_2.length == 1)
    {
 
-    
+      let c = list_1[0]
+      console.log(`${c} still looking for a group...`)
+      // look for trinomes
+      for (let i=0; i< groups.length; i++)
+      {
+          let a = groups[i].p1
+          let b = groups[i].p2
+          if((is_a_possible_pair(a, c, impossible_pairs)) && (is_a_possible_pair(b, c, impossible_pairs)))
+          {
+            trinome_options.push (new Trinome(a, b, c))
+          }
+      }
+
+      let r = getRandomInt(0, trinome_options.length)
+      console.log(trinome_options)
+
+      let selected_trinome = trinome_options[r]
+
+      console.log("Selected trinome: ", trinome_options[r])
+
    }
+   
    return groups
 }
+
+
+
+// a Pair is a group with two individuals
+function Pair (p1, p2)
+{
+  this.p1 = p1.toString()
+  this.p2 = p2.toString()
+}
+
+// a Trinome is a group with three individuals
+function Trinome(p1, p2, p3)
+{
+  this.p1 = p1.toString()
+  this.p2 = p2.toString()
+  this.p3 = p3.toString()
+
+}
+
+
+
 
 // pick a random person from the list
 function pick_random_person (people_list)
@@ -113,7 +147,7 @@ function is_a_possible_pair(a, b, impossible_pairs)
     for (let u = 0; u < impossible_pairs.length; u++)
     {
        //console.log(impossible_pairs[u])
-       if ((impossible_pairs[u].s1 == a & impossible_pairs[u].s2 == b) || (impossible_pairs[u].s2 == a & impossible_pairs[u].s1 == b))
+       if ((impossible_pairs[u].p1 == a & impossible_pairs[u].p2 == b) || (impossible_pairs[u].p2 == a & impossible_pairs[u].p1 == b))
        {
          is_possible_pair = false
          break
