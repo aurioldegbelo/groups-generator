@@ -62,7 +62,7 @@ function generate_groups(all_people)
 
    }
 
-   let trinome_options = []
+   let trio_options = []
 
    if (list_1.length == 1 && list_2.length == 1)
    {
@@ -76,16 +76,20 @@ function generate_groups(all_people)
           let b = groups[i].p2
           if((is_a_possible_pair(a, c, impossible_pairs)) && (is_a_possible_pair(b, c, impossible_pairs)))
           {
-            trinome_options.push (new Trinome(a, b, c))
+            trio_options.push (new Trio(a, b, c))
           }
       }
 
-      let r = getRandomInt(0, trinome_options.length)
-      console.log(trinome_options)
+      let r = getRandomInt(0, trio_options.length)
+      console.log(trio_options)
 
-      let selected_trinome = trinome_options[r]
+      let selected_trio = trio_options[r]
+      console.log("Selected trio: ", selected_trio)
 
-      console.log("Selected trinome: ", trinome_options[r])
+      let id = index_of_trio(selected_trio, groups)
+
+      groups.filter
+      groups.push(selected_trio)
 
    }
    
@@ -102,7 +106,7 @@ function Pair (p1, p2)
 }
 
 // a Trinome is a group with three individuals
-function Trinome(p1, p2, p3)
+function Trio(p1, p2, p3)
 {
   this.p1 = p1.toString()
   this.p2 = p2.toString()
