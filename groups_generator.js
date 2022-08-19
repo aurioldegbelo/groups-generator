@@ -48,9 +48,7 @@ function generate_groups(all_people, ruled_out_pairs)
    let br = document.createElement("br")
 
    let groups = []
-   let n_groups = 4
-
-   console.log(all_people.length)
+   let n_groups = Math.floor(all_people.length/2)
 
    console.log("All people: ",all_people)
    explanation_div.append("All people: ", all_people)
