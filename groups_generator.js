@@ -19,7 +19,9 @@ var all_people = [
 
 let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
 
-console.log("Suggested Group: ", generate_groups(all_people, ruled_out_pairs))
+let groups = generate_groups(all_people, ruled_out_pairs)
+
+show_groups_as_cards(groups)
 
 
 /** Definition of all functions starts here */
@@ -45,22 +47,22 @@ function Trio(p1, p2, p3)
 function generate_groups(all_people, ruled_out_pairs)
 {
    let explanation_div = document.getElementById("explanation")
-   let br = document.createElement("br")
 
    let groups = []
    let n_groups = Math.floor(all_people.length/2)
 
+   console.log("Explaining how the groups were created...")
+   explanation_div.insertAdjacentHTML('afterbegin', `Explaining how the groups were created... <br/>`)
+
+
    console.log("All people: ",all_people)
-   explanation_div.append("All people: ", all_people)
-   explanation_div.append(br)
+   explanation_div.insertAdjacentHTML('beforeend', `All people:  ${all_people} <br/>`)
 
    console.log("Pairs ruled out: ", ruled_out_pairs)
-   explanation_div.append("Pairs ruled out: ", JSON.stringify(ruled_out_pairs))
-   explanation_div.append(br)
+   explanation_div.insertAdjacentHTML('beforeend', `Pairs ruled out:  ${JSON.stringify(ruled_out_pairs)} <br/>`)
 
-   console.log("Number of groups: ", n_groups)
-   explanation_div.append("Number of groups: ", n_groups)
-   explanation_div.append(br)
+  console.log("Expected number of groups: ", n_groups)
+  explanation_div.insertAdjacentHTML('beforeend', `Expected number of groups: ${ n_groups} <br/>`)
 
    // generate two lists out the group of all people
    let list_1 = [...all_people]
@@ -79,6 +81,8 @@ function generate_groups(all_people, ruled_out_pairs)
       if(is_a_possible_pair(a, b, ruled_out_pairs))
       {
         console.log("New pair created:", a, b)
+        explanation_div.insertAdjacentHTML('beforeend', `New pair created: ${a}, ${b} <br/>`)
+
         list_1 = list_1.filter(item => item !== a && item !== b)
         list_2 = list_2.filter(item => item !== a && item !== b)
        // console.log(list_1)
@@ -97,6 +101,7 @@ function generate_groups(all_people, ruled_out_pairs)
    }
 
    console.log("Pairs so far...", groups)
+   explanation_div.insertAdjacentHTML('beforeend', `Pairs so far...:  ${JSON.stringify(groups)} <br/>`)
 
    // if there happens to be an odd number of people to put into groups, we need one trio
    let trio_options = []
@@ -106,6 +111,8 @@ function generate_groups(all_people, ruled_out_pairs)
 
       let c = list_1[0]
       console.log(`${c} is still looking for a group...`)
+      explanation_div.insertAdjacentHTML('beforeend', `${c} is still looking for a group... <br/>`)
+
 
       // look for trio
       for (let i=0; i< groups.length; i++)
@@ -120,11 +127,14 @@ function generate_groups(all_people, ruled_out_pairs)
       }
 
       console.log("Possible trios: ", trio_options)
+      explanation_div.insertAdjacentHTML('beforeend', ` Possible trios: ${JSON.stringify(trio_options)} <br/>`)
+
 
       // randomly select a trio out of all possible options
       let r = getRandomInt(0, trio_options.length)
       let selected_trio = trio_options[r]
       console.log("Selected trio: ", selected_trio)
+      explanation_div.insertAdjacentHTML('beforeend', `Selected trio: ${JSON.stringify(selected_trio)} <br/>`)
 
       // delete the pair
       groups = groups.filter (item => !in_trio(item.p1, selected_trio) && !in_trio(item.p2, selected_trio))
@@ -133,8 +143,22 @@ function generate_groups(all_people, ruled_out_pairs)
       groups.push(selected_trio)
 
    }
-   
+
+
+   console.log("Suggested groups: ", groups)
+   explanation_div.insertAdjacentHTML('beforeend', `Suggested groups: ${JSON.stringify(groups)} <br/>`)
    return groups
+}
+
+
+function show_groups_as_cards(groups)
+{
+    let results_div = document.getElementById("results")
+    results_div.insertAdjacentHTML('afterbegin', `Displaying the results... <br/>`)
+
+
+
+
 }
 
 // check if a name is in the trio
