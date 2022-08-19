@@ -113,6 +113,7 @@ function generate_groups(all_people, ruled_out_pairs)
         console.log("New pair created:", a, b)
         explanation_div.insertAdjacentHTML('beforeend', `New pair created: ${a}, ${b} <br/>`)
 
+        // delete the elements of the pairs from the available choices to pick from
         list_1 = list_1.filter(item => item !== a && item !== b)
         list_2 = list_2.filter(item => item !== a && item !== b)
        // console.log(list_1)
