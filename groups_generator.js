@@ -6,20 +6,20 @@ Last modified: August 2022
 */
 
 var all_people = [
-  "Auriol",
-  "Jean-Yves",
-  "Esther",
-  "Lionel",
-  "Naemi",
-  "Serge",
-  "Carole",
-  "Richard",
-  "Sonia"
+  "AD",
+  "JB",
+  "EB",
+  "LB",
+  "NM",
+  "SN",
+  "CN",
+  "RM",
+  "SM"
 ];
 
 
 
-let ruled_out_pairs = [ new Pair ("Serge", "Carole"), new Pair ("Sonia", "Richard"), new Pair ("Jean-Yves", "Esther"), new Pair ("Lionel", "Naemi")] 
+let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
 
 console.log("All people: ",all_people)
 console.log("Pairs ruled out: ", ruled_out_pairs)
