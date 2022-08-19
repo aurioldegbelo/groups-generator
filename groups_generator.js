@@ -55,7 +55,7 @@ function generate_groups(all_people, ruled_out_pairs)
    explanation_div.append(br)
 
    console.log("Pairs ruled out: ", ruled_out_pairs)
-   explanation_div.append("Pairs ruled out: ", ruled_out_pairs.toString())
+   explanation_div.append("Pairs ruled out: ", JSON.stringify(ruled_out_pairs))
    explanation_div.append(br)
 
    console.log("Number of groups: ", n_groups)
