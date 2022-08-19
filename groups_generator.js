@@ -19,9 +19,7 @@ var all_people = [
 
 let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
 
-console.log("All people: ",all_people)
-console.log("Pairs ruled out: ", ruled_out_pairs)
-console.log("Suggested Group: ", generate_groups(all_people))
+console.log("Suggested Group: ", generate_groups(all_people, ruled_out_pairs))
 
 
 /** Definition of all functions starts here */
@@ -44,7 +42,7 @@ function Trio(p1, p2, p3)
 }
 
 // function to generate the groups
-function generate_groups(all_people)
+function generate_groups(all_people, ruled_out_pairs)
 {
    let explanation_div = document.getElementById("explanation")
    let br = document.createElement("br")
@@ -53,11 +51,19 @@ function generate_groups(all_people)
    let n_groups = 4
 
    console.log(all_people.length)
+
+   console.log("All people: ",all_people)
    explanation_div.append("All people: ", all_people)
    explanation_div.append(br)
 
+   console.log("Pairs ruled out: ", ruled_out_pairs)
    explanation_div.append("Pairs ruled out: ", ruled_out_pairs.toString())
-   explanation_div.append("Number of people: ", all_people.length)
+   explanation_div.append(br)
+
+   console.log("Number of groups: ", n_groups)
+   explanation_div.append("Number of groups: ", n_groups)
+   explanation_div.append(br)
+
    // generate two lists out the group of all people
    let list_1 = [...all_people]
    let list_2 = [...all_people]
