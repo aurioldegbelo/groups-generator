@@ -1,6 +1,6 @@
 "use strict";
 /*
-@description: script to generate pairs/trios that satisfy given constraints
+@description: script to generate pairs/trios that satisfy some simple constraints
 @author: Auriol Degbelo
 Last modified: August 2022
 */
@@ -10,30 +10,54 @@ var all_people = [
   "JB",
   "EB",
   "LB",
-  "NM",
+  "NB",
   "SN",
   "CN",
   "RM",
   "SM"
 ];
 
-
-
 let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
 
 console.log("All people: ",all_people)
 console.log("Pairs ruled out: ", ruled_out_pairs)
-console.log("Groups for this quarter: ", generate_groups(all_people))
+console.log("Suggested Group: ", generate_groups(all_people))
 
 
 /** Definition of all functions starts here */
 
+
+// a Pair is a group with two individuals
+function Pair (p1, p2)
+{
+  this.p1 = p1.toString()
+  this.p2 = p2.toString()
+}
+
+// a Trio is a group with three individuals
+function Trio(p1, p2, p3)
+{
+  this.p1 = p1.toString()
+  this.p2 = p2.toString()
+  this.p3 = p3.toString()
+
+}
+
 // function to generate the groups
 function generate_groups(all_people)
 {
+   let explanation_div = document.getElementById("explanation")
+   let br = document.createElement("br")
+
    let groups = []
    let n_groups = 4
 
+   console.log(all_people.length)
+   explanation_div.append("All people: ", all_people)
+   explanation_div.append(br)
+
+   explanation_div.append("Pairs ruled out: ", ruled_out_pairs.toString())
+   explanation_div.append("Number of people: ", all_people.length)
    // generate two lists out the group of all people
    let list_1 = [...all_people]
    let list_2 = [...all_people]
@@ -108,25 +132,6 @@ function generate_groups(all_people)
    
    return groups
 }
-
-
-
-// a Pair is a group with two individuals
-function Pair (p1, p2)
-{
-  this.p1 = p1.toString()
-  this.p2 = p2.toString()
-}
-
-// a Trio is a group with three individuals
-function Trio(p1, p2, p3)
-{
-  this.p1 = p1.toString()
-  this.p2 = p2.toString()
-  this.p3 = p3.toString()
-
-}
-
 
 // check if a name is in the trio
 function in_trio (name, trio)
