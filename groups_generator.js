@@ -6,7 +6,6 @@ Last modified: August 2022
 */
 
 var all_people = [
-  "AD",
   "JB",
   "EB",
   "LB",
@@ -14,7 +13,8 @@ var all_people = [
   "SN",
   "CN",
   "RM",
-  "SM"
+  "SM", 
+  "AD"
 ];
 
 let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
@@ -43,7 +43,7 @@ function Trio(p1, p2, p3)
 
 }
 
-
+// a Card can show a group or a trio
 function Card(id, elements)
 {
 
@@ -179,22 +179,14 @@ function generate_groups(all_people, ruled_out_pairs)
 }
 
 
+// create a card, one per group
 function show_groups_as_cards(groups)
 {
+
     let results_div = document.getElementById("results")
 
     for (let u = 0; u < groups.length; u++ )
     {
-
-      /*
-      let card_content = `<div class="card col-md-2" id="group${u+1}">
-      <div class="card-header"> Group ${u+1} </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">${groups[u].p1}</li>
-        <li class="list-group-item">${groups[u].p2}</li>
-      </ul>
-      </div>`
-      */
       let currentcard = new Card(u+1, groups[u])
       results_div.insertAdjacentHTML('beforeEnd', currentcard.card_content)
       results_div.insertAdjacentHTML('beforeEnd', "<br/>")
