@@ -107,6 +107,13 @@ function generate_groups(all_people, ruled_out_pairs)
        let a = pick_random_person(list_1)
        let b = pick_random_person(list_2)
 
+      // there is only one group left, and we've picked the same person from both lists
+      if (groups.length == n_groups-1 && a == b) 
+      {
+        console.log("Moving to the next iteration...")
+        continue // draw again from the list
+      }
+     
        // create a new pair if the given conditions are fulfilled
       if(is_a_possible_pair(a, b, ruled_out_pairs))
       {
@@ -127,13 +134,6 @@ function generate_groups(all_people, ruled_out_pairs)
       }
       
           
-      // there is only one group left, but the two possible elements of the pair form a ruled out pair
-      if (groups.length == n_groups-1 && a == b) 
-      {
-        console.log("Test Test")
-        continue
-      }
-     
       // there is only one group left, but the two possible elements of the pair form a ruled out pair
       if (groups.length == n_groups-1 && !is_a_possible_pair(a, b, ruled_out_pairs)) 
       {
