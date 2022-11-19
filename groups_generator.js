@@ -110,7 +110,7 @@ function generate_groups(all_people, ruled_out_pairs)
       // there is only one group left, and we've picked the same person from both lists
       if (groups.length == n_groups-1 && a == b) 
       {
-        console.log("People drawn from the lists:" a, b)
+        console.log("People drawn from the lists: ", a, b)
         console.log("Moving to the next iteration...")
         continue // draw again from the list
       }
