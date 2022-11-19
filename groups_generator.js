@@ -179,10 +179,9 @@ function generate_groups(all_people, ruled_out_pairs)
 
       // randomly select a trio out of all possible options
       let r = getRandomInt(0, trio_options.length)
-      console.log("Value of r for the random trio: ", r)
       let selected_trio = trio_options[r]
-      console.log("Selected trio: ", selected_trio)
-      explanation_div.insertAdjacentHTML('beforeend', `Selected trio: ${JSON.stringify(selected_trio)} <br/>`)
+      console.log(`Randomly selected trio (r =  ${r}): ${selected_trio}`)
+      explanation_div.insertAdjacentHTML('beforeend', `Randomly selected trio (r =  ${r}): ${JSON.stringify(selected_trio)} <br/>`)
 
       // delete the pair
       groups = groups.filter (item => !in_trio(item.p1, selected_trio) && !in_trio(item.p2, selected_trio))
