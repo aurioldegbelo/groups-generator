@@ -141,8 +141,8 @@ function generate_groups(all_people, ruled_out_pairs)
         list_1 = [...all_people]
         list_2 = [...all_people]
         
-        console.log("Last pair ruled out: starting over again...")
-        explanation_div.insertAdjacentHTML('beforeend', `Last pair ruled out: starting over again... <br/>`)
+        console.log(`Last pair [ ${a}, ${b} ] ruled out: starting over again... `)
+        explanation_div.insertAdjacentHTML('beforeend', `Last pair [ ${a}, ${b} ] ruled out: starting over again... <br/>`)
       }
     
    }
