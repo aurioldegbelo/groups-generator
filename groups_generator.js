@@ -15,12 +15,11 @@ var all_people = [
   "CN",
   "RM",
   "SM", 
-  "AD", 
-  "JD"
+  "AD"
 ];
 
 // example data about ruled-out pairs
-let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB"), new Pair ("JD", "AD")] 
+let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
 
 let groups = generate_groups(all_people, ruled_out_pairs)
 
@@ -257,7 +256,7 @@ function is_a_possible_pair(a, b, ruled_out_pairs)
    }
    else
    {
-    // check if the current pair is in the list of impossible pair
+    // check if the current pair is in the list of impossible pairs
     for (let u = 0; u < ruled_out_pairs.length; u++)
     {
        //console.log(ruled_out_pairs[u])
