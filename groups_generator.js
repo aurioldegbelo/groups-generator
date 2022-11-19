@@ -110,6 +110,7 @@ function generate_groups(all_people, ruled_out_pairs)
       // there is only one group left, and we've picked the same person from both lists
       if (groups.length == n_groups-1 && a == b) 
       {
+        console.log("People drawn from the lists:" a, b)
         console.log("Moving to the next iteration...")
         continue // draw again from the list
       }
@@ -124,12 +125,9 @@ function generate_groups(all_people, ruled_out_pairs)
         list_1 = list_1.filter(item => item !== a && item !== b)
         list_2 = list_2.filter(item => item !== a && item !== b)
         groups.push(new Pair(a, b))
-        console.log("***************")
-
+        console.log("Updated lists for the next iteration...")
         console.log(list_1)
         console.log(list_2)
-        console.log(a)
-        console.log(b)
         
       }
       
@@ -137,12 +135,8 @@ function generate_groups(all_people, ruled_out_pairs)
       // there is only one group left, but the two possible elements of the pair form a ruled out pair
       if (groups.length == n_groups-1 && !is_a_possible_pair(a, b, ruled_out_pairs)) 
       {
-        console.log("-----------------------------")
-        console.log(list_1)
-        console.log(list_2)
-        console.log(a)
-        console.log(b)
-        
+        console.log("Last pair: ", a, b)
+
         groups = [] // start again
         list_1 = [...all_people]
         list_2 = [...all_people]
