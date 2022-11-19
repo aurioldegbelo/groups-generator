@@ -130,6 +130,7 @@ function generate_groups(all_people, ruled_out_pairs)
       // there is only one group left, but the two possible elements of the pair form a ruled out pair
       if (groups.length == n_groups-1 && a == b) 
       {
+        console.log("Test Test")
         continue
       }
      
