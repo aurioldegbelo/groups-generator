@@ -15,11 +15,12 @@ var all_people = [
   "CN",
   "RM",
   "SM", 
-  "AD"
+  "AD", 
+  "JD"
 ];
 
 // example data about ruled-out pairs
-let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
+let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB"), new Pair ("JD", "AD")] 
 
 let groups = generate_groups(all_people, ruled_out_pairs)
 
