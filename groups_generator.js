@@ -6,20 +6,15 @@ Last modified: November 2022
 */
 
 // example data about people to group
-var all_people = [
-  "JB",
-  "EB",
-  "LB",
-  "NB",
-  "SN",
-  "CN",
-  "RM",
-  "SM", 
-  "AD"
-];
+// var all_people = [ "JB", "EB", "LB", "NB", "SN", "CN", "RM", "SM", "AD"]
+
+var all_people = [ "JB", "EB", "LB", "NB", "SN", "CN", "SM", "AD"];
+
 
 // example data about ruled-out pairs
-let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
+//let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
+let ruled_out_pairs = [ new Pair ("SN", "CN"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
+
 
 let groups = generate_groups(all_people, ruled_out_pairs)
 
