@@ -7,7 +7,6 @@ Last modified: November 2022
 
 // example data about people to group
 // var all_people = [ "JB", "EB", "LB", "NB", "SN", "CN", "RM", "SM", "AD"]
-
 var all_people = [ "JB", "EB", "LB", "NB", "SN", "CN", "SM", "AD"];
 
 
