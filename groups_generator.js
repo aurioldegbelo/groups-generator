@@ -2,7 +2,7 @@
 /*
 @description: script to generate pairs/trios that satisfy some simple constraints
 @author: Auriol Degbelo
-Last modified: November 2022
+Last modified: January 2023
 */
 
 // example data about people to group
