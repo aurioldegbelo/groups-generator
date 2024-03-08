@@ -13,9 +13,10 @@ var all_people = [ "JB", "EB", "LB", "NB", "SN", "CN", "SM", "AD"];
 // example data about ruled-out pairs
 //let bin_always = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
 let bin_always = [ new Pair ("SN", "CN"), new Pair ("JB", "EB"), new Pair ("LB", "NB")]
-let bin_last = [ new Pair ("JB", "LB"), new Pair ("SN", "NB"), new Pair ("AD", "SM"), new Pair ("EB", "CN")]
-let bin_beforelast = [ new Pair ("LB", "SN"), new Pair ("JB", "SM"), new Pair ("CN", "AD"), new Pair ("EB", "NB")]
-let bin_beforebeforelast = [ new Pair ("SN", "AD"), new Pair ("LB", "EB"), new Pair ("JB", "SM"), new Pair ("CN", "NB")]
+
+let bin_last = [new Pair ("AD", "NB"), new Pair ("AD", "NB"), new Pair ("AD", "NB"), new Pair ("AD", "NB")]
+let bin_beforelast =  [ new Pair ("JB", "LB"), new Pair ("SN", "NB"), new Pair ("AD", "SM"), new Pair ("EB", "CN")]
+let bin_beforebeforelast = [ new Pair ("LB", "SN"), new Pair ("JB", "SM"), new Pair ("CN", "AD"), new Pair ("EB", "NB")] 
 
 let ruled_out_pairs =  bin_always.concat(bin_last).concat(bin_beforelast).concat(bin_beforebeforelast)
 
