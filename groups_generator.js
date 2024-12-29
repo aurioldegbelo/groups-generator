@@ -15,11 +15,13 @@ var all_people = [ "JB", "EB", "LB", "NB", "SN", "CN", "AD"];
 //let bin_always = [ new Pair ("SN", "CN"), new Pair ("SM", "RM"), new Pair ("JB", "EB"), new Pair ("LB", "NB")] 
 let bin_always = [ new Pair ("SN", "CN"), new Pair ("JB", "EB"), new Pair ("LB", "NB")]
 
-let bin_last = [new Pair ("AD", "NB"), new Pair ("JB", "CN"), new Pair ("SM", "LB"), new Pair ("EB", "SN")]
-let bin_beforelast =  [ new Pair ("JB", "LB"), new Pair ("SN", "NB"), new Pair ("AD", "SM"), new Pair ("EB", "CN")]
-let bin_beforebeforelast = [ new Pair ("LB", "SN"), new Pair ("JB", "SM"), new Pair ("CN", "AD"), new Pair ("EB", "NB")] 
+//let bin_last = [new Pair ("AD", "NB"), new Pair ("JB", "CN"), new Pair ("SM", "LB"), new Pair ("EB", "SN")]
+//let bin_beforelast =  [ new Pair ("JB", "LB"), new Pair ("SN", "NB"), new Pair ("AD", "SM"), new Pair ("EB", "CN")]
+//let bin_beforebeforelast = [ new Pair ("LB", "SN"), new Pair ("JB", "SM"), new Pair ("CN", "AD"), new Pair ("EB", "NB")] 
 
-let ruled_out_pairs =  bin_always.concat(bin_last).concat(bin_beforelast).concat(bin_beforebeforelast)
+//let ruled_out_pairs =  bin_always.concat(bin_last).concat(bin_beforelast).concat(bin_beforebeforelast)
+
+let ruled_out_pairs =  bin_always
 
 
 let groups = generate_groups(all_people, ruled_out_pairs)
